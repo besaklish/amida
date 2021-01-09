@@ -12,12 +12,22 @@
 
   <div class="svg"></div>
   <script src="/amida/static/js/index.js"></script>
+  <script src="/static/js/index.js"></script>
 
-  <label>
-    人数
-    <input type="number" min=3 onchange="handleChangeNumOfKujis(event)"></input>
-  </label>
-  <button onclick="adm.addBranch()">横線を追加</button>
-  <button onclick="play()">再生</button>
+  <div class="m-3">
+    <div class="mb-3 d-grid gap-2">
+      <label>
+        人数
+        <input type="number" min=3 onchange="handleChangeNumOfKujis(event)"></input>
+      </label>
+    </div>
+  <div class="mb-3 d-grid gap-2">
+    <button type="button" class="btn btn-primary" onclick="adm.addBranch()">横線を追加</button>
+  </div>
+  <div class="mb-3 d-grid gap-2">
+    <button type="button" class="btn btn-primary" onclick="play()">再生</button>
+  </div>  
+  
+  </div>
 </body>
 </html>
