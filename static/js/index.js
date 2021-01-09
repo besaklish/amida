@@ -281,7 +281,7 @@ class AmidaDrawingManager {
     path.fill('none');
     path.attr({ pathLength: 1, "stroke-dashoffset": 1, "stroke-dasharray": 1, opacity: 0.3 });
     path.addClass(`columnNumber-${columnNumber}`);
-    path.animate(2000, 1000, 'now').attr({ "stroke-dashoffset": 0 });
+    path.animate(2000, 0, 'now').attr({ "stroke-dashoffset": 0 });
   }
 
   removeTraceRecords(columnNumber) {
@@ -326,9 +326,9 @@ const play = async () => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
   for (let i = 0; i < adm.numOfKujis; i++) {
     adm.drawTraceRecords(i);
-    await delay(4000);
+    await delay(2500);
     adm.removeTraceRecords(i);
-    await delay(2000);
+    await delay(500);
   }
 }
 
