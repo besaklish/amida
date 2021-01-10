@@ -253,8 +253,8 @@ class AmidaDrawingManager {
 
     // console.log(`1st #: ${leftColumnNumber}, 2nd #: ${rightColumnNumber}`);
 
-    const leftBreakpointRate = Math.random();
-    const rightBreakpointRate = Math.random();
+    const leftBreakpointRate = Math.random() * 0.9;
+    const rightBreakpointRate = Math.random() * 0.9;
 
     const columnLength = this.YRate2Abs(this.amidaRowSpaceEnd - this.nameRowSpaceEnd);
     const leftBreakpoint = this.YRate2Abs(this.nameRowSpaceEnd) + leftBreakpointRate * columnLength;
