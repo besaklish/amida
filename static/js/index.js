@@ -339,7 +339,7 @@ const play = async () => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
   for (let i = 0; i < adm.numOfKujis; i++) {
     adm.drawTraceRecords(i);
-    await delay(2500);
+    await delay(4000);
     adm.removeTraceRecords(i);
     await delay(500);
   }
