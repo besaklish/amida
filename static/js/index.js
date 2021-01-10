@@ -173,8 +173,8 @@ class AmidaDrawingManager {
     this.sizeX = sizeX;
     this.sizeY = sizeY;
 
-    this.nameRowSpaceEnd = 0.1;
-    this.amidaRowSpaceEnd = 0.9;
+    this.nameRowSpaceEnd = 0.15;
+    this.amidaRowSpaceEnd = 0.85;
     // this.resultRowSpaceEnd = 1.0;
 
     this.numOfKujis = 3;
