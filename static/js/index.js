@@ -169,11 +169,12 @@ class AmidaDrawingManager {
   constructor(sizeX, sizeY, addTo) {
     this.draw = SVG().addTo(addTo).size(sizeX, sizeY);
 
+    this.addTo = addTo;
     this.sizeX = sizeX;
     this.sizeY = sizeY;
 
-    this.nameRowSpaceEnd = 0.2;
-    this.amidaRowSpaceEnd = 0.7;
+    this.nameRowSpaceEnd = 0.1;
+    this.amidaRowSpaceEnd = 0.9;
     // this.resultRowSpaceEnd = 1.0;
 
     this.numOfKujis = 3;
@@ -211,18 +212,27 @@ class AmidaDrawingManager {
       const cl = new ColumeLine(i, line);
       this.clm.pushColumnLine(cl);
 
-      const text = this.draw.text((i + 1).toString()).move(xStart, yStart - this.XRate2Abs(1 / this.numOfKujis / 4));
-      text.font({
-        size: this.XRate2Abs(1 / this.numOfKujis / 4),
-        anchor: 'middle'
-      });
+      const canvas = document.getElementsByClassName('svg')[0];
+      const inputWidth = (this.XRate2Abs(1 / this.numOfKujis / 2)).toString() + "px";
+      const inputLeft = (xStart - this.XRate2Abs(1 / this.numOfKujis / 4)).toString() + "px";
 
-      const resultText = this.draw.text(i === resultNumber ? "×" : "○").move(xEnd, yEnd);
-      resultText.font({
-        size: this.XRate2Abs(1 / this.numOfKujis / 4),
-        anchor: 'middle'
-      });
+      const input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.setAttribute("value", i + 1);
+      input.style.position = "absolute";
+      input.style.left = inputLeft;
+      input.style.top = (yStart - this.XRate2Abs(1 / this.numOfKujis / 4)).toString() + "px";
+      input.style.width = inputWidth;
+      canvas.appendChild(input);
 
+      const resultInput = document.createElement("input");
+      resultInput.setAttribute("type", "text");
+      resultInput.setAttribute("value", i === resultNumber ? "×" : "○");
+      resultInput.style.position = "absolute";
+      resultInput.style.left = inputLeft;
+      resultInput.style.top = (yEnd).toString() + "px";
+      resultInput.style.width = inputWidth;
+      canvas.appendChild(resultInput);
     }
 
     for (const line of lines) {
@@ -307,9 +317,12 @@ class AmidaDrawingManager {
     this.clm = new ColumnLineManager();
     this.bm = new BranchManager();
     this.tracer = new Tracer(this.clm, this.bm);
-    adm.draw.clear();
+    const canvas = document.getElementsByClassName('svg')[0];
+    while (canvas.firstChild) {
+      canvas.removeChild(canvas.lastChild);
+    }
+    this.draw = SVG().addTo(this.addTo).size(this.sizeX, this.sizeY);
   }
-
 }
 
 let adm = new AmidaDrawingManager(window.innerWidth, window.innerHeight * 0.7, 'div.svg');
