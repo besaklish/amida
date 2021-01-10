@@ -213,8 +213,8 @@ class AmidaDrawingManager {
       this.clm.pushColumnLine(cl);
 
       const canvas = document.getElementsByClassName('svg')[0];
-      const inputWidth = (this.XRate2Abs(1 / this.numOfKujis / 2)).toString() + "px";
-      const inputLeft = (xStart - this.XRate2Abs(1 / this.numOfKujis / 4)).toString() + "px";
+      const inputWidth = (this.XRate2Abs(1 / this.numOfKujis / 1.5)).toString() + "px";
+      const inputLeft = (xStart - this.XRate2Abs(1 / this.numOfKujis / 3)).toString() + "px";
 
       const input = document.createElement("input");
       input.setAttribute("type", "text");
