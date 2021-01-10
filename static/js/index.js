@@ -289,7 +289,7 @@ class AmidaDrawingManager {
     const path = this.draw.path(pathString);
     path.stroke({ color: "#f55", width: 10 });
     path.fill('none');
-    path.attr({ pathLength: 1, "stroke-dashoffset": 1, "stroke-dasharray": 1, opacity: 0.3 });
+    path.attr({ pathLength: 1, "stroke-dashoffset": 1, "stroke-dasharray": 1, opacity: 0.5 });
     path.addClass(`columnNumber-${columnNumber}`);
     path.animate(2000, 0, 'now').attr({ "stroke-dashoffset": 0 });
   }
